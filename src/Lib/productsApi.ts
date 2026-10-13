@@ -16,4 +16,16 @@ async function fetchAllProducts(): Promise<Product[]> {
   return data;
 }
 
-export { fetchAllProducts };
+async function fetchProductsById(id: string): Promise<Product> {
+  const response = await fetch(
+    `https://api.escuelajs.co/api/v1/products/${id}`,
+  );
+  if (!response.ok) {
+    throw new Error(`HTTP Error: ${response.status}`);
+  }
+
+  const data = await response.json();
+  return data;
+}
+
+export { fetchAllProducts, fetchProductsById };
