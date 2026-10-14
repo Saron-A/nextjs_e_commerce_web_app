@@ -18,7 +18,7 @@ const CategoryDetails = async ({ params }: CategoryDetailsProps) => {
       <section>
         {products &&
           products.map((product) => (
-            <Link href={`/products/${id}`} key={product.id}>
+            <Link href={`/products/${product.id}`} key={product.id}>
               <article>
                 <h3>{product.title}</h3>
               </article>
