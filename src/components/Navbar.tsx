@@ -6,7 +6,7 @@ const Navbar = () => {
     <nav className="flex justify-between gap-5 py-3 px-4 border-b border-gray-300">
       <div className="flex gap-4 items-center">
         <Link href="/" className="flex gap-2">
-          <ShoppingBag className="p-1 bg-blue-600 text-white border-0 rounded" />
+          <ShoppingBag className="p-1 bg-blue-600 text-white border-0 rounded self-center" />
           <span className="font-bold text-xl">Be-xpert Store</span>
         </Link>
 

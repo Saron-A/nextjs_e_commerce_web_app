@@ -80,6 +80,10 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "www.davis-barber.com",
       },
+      {
+        protocol: "https",
+        hostname: "example.com",
+      },
     ],
   },
 };

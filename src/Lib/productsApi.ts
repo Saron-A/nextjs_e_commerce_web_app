@@ -1,4 +1,5 @@
 import { Product } from "@/types/product";
+import { Category } from "@/types/category";
 
 // interface ProductsResponse {
 //     products: Product[];
@@ -28,4 +29,17 @@ async function fetchProductsById(id: string): Promise<Product> {
   return data;
 }
 
-export { fetchAllProducts, fetchProductsById };
+async function fetchProductsByCategoryId(id: string) {
+  // map the id to all the products with the same category ids
+  // return an array of the products
+
+  const allProducts = await fetchAllProducts();
+  console.log("All Products", allProducts);
+  const productsByCategory = allProducts.filter(
+    (product) => String(product.category.id) === id && product,
+  );
+  console.log("Products of same category", productsByCategory);
+  return productsByCategory;
+}
+
+export { fetchAllProducts, fetchProductsById, fetchProductsByCategoryId };
