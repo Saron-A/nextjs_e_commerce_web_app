@@ -84,6 +84,22 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "example.com",
       },
+      {
+        protocol: "https",
+        hostname: "www.ebay.com",
+      },
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      },
+      {
+        protocol: "http",
+        hostname: "nichols-sandoval.com",
+      },
+      {
+        protocol: "http",
+        hostname: "lopez.com",
+      },
     ],
   },
 };

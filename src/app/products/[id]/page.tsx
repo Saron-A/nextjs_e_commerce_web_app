@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { fetchProductsById } from "@/Lib/productsApi";
+import AddToCart from "@/components/AddToCart";
 
 interface ProductDetailsProp {
   params: Promise<{
@@ -38,9 +39,7 @@ const ProductDetails = async ({ params }: ProductDetailsProp) => {
           <p className="mt-6 leading-7 text-slate-600">{product.description}</p>
 
           <div className="mt-8">
-            <button className="px-4 py-2 bg-blue-400 border-0 rounded text-white font-bold hover:bg-blue-700">
-              Add to Cart
-            </button>
+            <AddToCart product={product} />
           </div>
         </div>
       </div>

@@ -1,7 +1,12 @@
+"use client";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Search, ShoppingBag, User, ShoppingCart, Tv } from "lucide-react";
+import { useCartStore } from "@/store/cartStore";
 
 const Navbar = () => {
+  const pathname = usePathname();
+  const cartItems = useCartStore((state) => state.cartItems);
   return (
     <nav className="flex justify-between gap-5 py-3 px-4 border-b border-gray-300">
       <div className="flex gap-4 items-center">
@@ -12,7 +17,7 @@ const Navbar = () => {
 
         <Link
           href="/"
-          className="text-gray-600 text-sm hover:text-black hover:font-semibold"
+          className={`hover:text-black hover:font-semibold ${pathname === "/" ? "text-blue-600 border-b-2 border-blue-500 hover:border-b-2 border-black" : "text-gray-600 text-sm"}`}
         >
           Home
         </Link>
@@ -43,9 +48,12 @@ const Navbar = () => {
       <div className="flex gap-5 justify-between items-center">
         <Link
           href="/cart"
-          className="hover:bg-blue-100 hover:text-blue-600 p-2 border-0 rounded-xl"
+          className="flex gap-1 hover:bg-blue-100 hover:text-blue-600 px-2 py-4 border-0  rounded-xl"
         >
-          <ShoppingCart className="w-5 h-4 text-sm font-thin" />
+          <ShoppingCart className="w-5 h-4 text-sm font-thin" />{" "}
+          <span className=" rounded-full bg-blue-500 px-1 py-0 text-xs text-white font-bold self-baseline items-start">
+            {cartItems.length}
+          </span>
         </Link>
         <Link
           href="/login"

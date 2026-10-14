@@ -1,5 +1,5 @@
 import { fetchAllProducts } from "@/Lib/productsApi";
-import ProductCard from "@/components/ProductCard";
+import ProductsFilter from "@/app/products/ProductsFilter";
 
 const ProductsPage = async () => {
   const products = await fetchAllProducts();
@@ -20,16 +20,8 @@ const ProductsPage = async () => {
 
   console.log("Unique image hostnames:", hostnames);
   console.log(products);
-  return (
-    <div className="min-h-screen">
-      <h1>Products Page</h1>
-      <div className="grid grid-cols-3 gap-10 p-4">
-        {products.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
-      </div>
-    </div>
-  );
+
+  return <ProductsFilter products={products} />;
 };
 
 export default ProductsPage;
