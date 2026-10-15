@@ -4,4 +4,6 @@ export interface AuthUser {
   email: string;
   role: string;
   avatar?: string;
+  accessToken: string;
+  refreshToken: string;
 }

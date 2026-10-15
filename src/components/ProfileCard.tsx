@@ -14,6 +14,7 @@ const ProfileCard = ({ user }: UserProp) => {
       {user.avatar && (
         <Image src={user.avatar} alt="user avatar" height="20" width="20" />
       )}
+      <p>role: {user.role}</p>
     </div>
   );
 };

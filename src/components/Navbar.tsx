@@ -37,6 +37,14 @@ const Navbar = () => {
         >
           Categories
         </Link>
+        {user && user.role === "admin" && (
+          <Link
+            href="/adminDashboard"
+            className={`hover:text-black hover:font-semibold ${pathname === "/categories" ? "text-blue-600 border-b-2 border-blue-500 hover:border-b-2 border-black" : "text-gray-600 text-sm"}`}
+          >
+            Admin Panel
+          </Link>
+        )}
       </div>
       <div className="flex gap-4 px-4 py-1 border rounded-4xl w-80 border-gray-400 bg-slate-100">
         <Search className="text-gray-600 self-center text-sm h-5 " />
