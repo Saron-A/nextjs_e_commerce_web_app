@@ -100,6 +100,14 @@ const nextConfig: NextConfig = {
         protocol: "http",
         hostname: "lopez.com",
       },
+      {
+        protocol: "https",
+        hostname: "jimenez.biz",
+      },
+      {
+        protocol: "http",
+        hostname: "www.smith.info",
+      },
     ],
   },
 };

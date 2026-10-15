@@ -1,12 +1,16 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Search, ShoppingBag, User, ShoppingCart, Tv } from "lucide-react";
 import { useCartStore } from "@/store/cartStore";
+import { useUserStore } from "@/store/userStore";
 
 const Navbar = () => {
   const pathname = usePathname();
   const cartItems = useCartStore((state) => state.cartItems);
+  const user = useUserStore((state) => state.user);
+  const logout = useUserStore((state) => state.logout);
   return (
     <nav className="flex justify-between gap-5 py-3 px-4 border-b border-gray-300">
       <div className="flex gap-4 items-center">
@@ -55,13 +59,36 @@ const Navbar = () => {
             {cartItems.length}
           </span>
         </Link>
-        <Link
-          href="/login"
-          className="flex gap-2 hover:bg-blue-100 hover:text-blue-600 p-2 border-0 rounded-xl"
-        >
-          <User className="w-5 h-4 text-sm font-thin self-center" />
-          <span className=" text-sm">Login</span>
-        </Link>
+        {user ? (
+          <>
+            <Link href="/profile">
+              {user?.avatar && (
+                <Image
+                  src={user.avatar}
+                  alt="user avatar"
+                  width="6"
+                  height="6"
+                  className="w-5 h-5 rounded-full"
+                />
+              )}
+            </Link>
+            <button
+              onClick={logout}
+              className="text-sm text-red-500 p-2 hover:bg-red-50 border-0 rounded-xl"
+            >
+              Log Out
+            </button>
+          </>
+        ) : (
+          <Link
+            href="/login"
+            className="flex gap-2 hover:bg-blue-100 hover:text-blue-600 p-2 border-0 rounded-xl"
+          >
+            <User className="w-5 h-4 text-sm font-thin self-center" />
+            <span className=" text-sm">Login</span>
+          </Link>
+        )}
+
         <button className="font-thin hover:bg-blue-100 hover:text-blue-600 p-2 border-0 rounded-xl">
           <Tv className="w-5 h-4 text-sm " />
         </button>

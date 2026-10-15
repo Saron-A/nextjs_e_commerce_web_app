@@ -4,7 +4,7 @@ interface UserProps {
   user: User;
 }
 
-const fetchAllProducts = async () => {
+const fetchAllUsers = async () => {
   const response = await fetch("https://api.escuelajs.co/api/v1/users");
 
   if (!response.ok) {
@@ -33,6 +33,8 @@ const createUser = async (user: User) => {
 };
 
 const loginUser = async ({ user }: UserProps) => {
+  const { email, password } = user;
+
   const response = await fetch("https://api.escuelajs.co/api/v1/auth/login", {
     method: "POST",
     headers: {
@@ -42,21 +44,33 @@ const loginUser = async ({ user }: UserProps) => {
   });
 
   const data = await response.json();
+  // the data is access and refresh token, not the user data
 
   if (!response.ok) {
     throw new Error(`Invalid Email or Password`);
   }
-  return data;
-  //   const checkUserMatch = users.find((user: User) => user.email === email);
-  //   if (!checkUserMatch) {
-  //     return "User doesn't exist";
-  //   }
+  console.log("Tokens", data);
+  // find the user's full info from the backend
 
-  //   if (checkUserMatch.password === password) {
-  //     return checkUserMatch;
-  //   }
+  const allUsers = await fetchAllUsers();
 
-  //   return "Invalid credentials";
+  // user data - store it in userStore and make the other component use it
+  const checkUserMatch = allUsers.find((user: User) => user.email === email);
+  if (!checkUserMatch) {
+    return "User doesn't exist";
+  }
+
+  if (checkUserMatch.password !== password) {
+    return "Invalid credentials";
+  }
+
+  const finalResponseObject = {
+    ...checkUserMatch,
+    ...data,
+  };
+  return finalResponseObject;
 };
 
-export { createUser, fetchAllProducts, loginUser };
+// const getUserByEmail = ({ user }: UserProps) => {};
+
+export { createUser, fetchAllUsers, loginUser };

@@ -4,8 +4,9 @@ import { useState, type ChangeEvent, type FormEvent } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { User } from "@/types/user";
-import { loginUser } from "@/Lib/usersApi";
+import { loginUser, fetchAllUsers } from "@/Lib/usersApi";
 import { ShoppingBag } from "lucide-react";
+import { useUserStore } from "@/store/userStore";
 
 const LoginForm = () => {
   const router = useRouter();
@@ -16,6 +17,7 @@ const LoginForm = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const setUser = useUserStore((state) => state.setUser);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -34,12 +36,29 @@ const LoginForm = () => {
     };
 
     try {
+      const allUsers = await fetchAllUsers();
+      console.log(allUsers);
+
       const response = await loginUser({ user });
+      console.log(response);
+      //response returns an object with data and userInfo destructed
 
       if (response.status === 201) {
         console.log("User successfully created");
       }
       setSuccess("Login Successful!");
+      const authenticatedUser = {
+        id: response.id,
+        name: response.name,
+        email: response.email,
+        role: response.role,
+        avatar: response.avatar,
+        accessToken: response.access_token,
+        refreshToken: response.refresh_token,
+      };
+
+      setUser(authenticatedUser);
+
       setTimeout(() => {
         router.push("/");
       }, 1000);
