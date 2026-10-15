@@ -1,5 +1,6 @@
 import { fetchAllProducts } from "@/Lib/productsApi";
 import CategoryCard from "@/components/CategoryCard";
+import Navbar from "@/components/Navbar";
 
 const CategoriesList = async () => {
   const products = await fetchAllProducts();
@@ -14,6 +15,7 @@ const CategoriesList = async () => {
 
   return (
     <div>
+      <Navbar />
       <header>
         <h1>Categories</h1>
         <p>Find products grouped by department</p>

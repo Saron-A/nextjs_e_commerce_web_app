@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { fetchProductsByCategoryId } from "@/Lib/productsApi";
+import Navbar from "@/components/Navbar";
 
 interface CategoryDetailsProps {
   params: Promise<{
@@ -13,19 +14,22 @@ const CategoryDetails = async ({ params }: CategoryDetailsProps) => {
   console.log(products);
 
   return (
-    <section>
-      <header>{products[0].category.name}</header>
+    <div className="flex flex-col gap-2">
+      <Navbar />
       <section>
-        {products &&
-          products.map((product) => (
-            <Link href={`/products/${product.id}`} key={product.id}>
-              <article>
-                <h3>{product.title}</h3>
-              </article>
-            </Link>
-          ))}
+        <header>{products[0].category.name}</header>
+        <section>
+          {products &&
+            products.map((product) => (
+              <Link href={`/products/${product.id}`} key={product.id}>
+                <article>
+                  <h3>{product.title}</h3>
+                </article>
+              </Link>
+            ))}
+        </section>
       </section>
-    </section>
+    </div>
   );
 };
 

@@ -1,5 +1,6 @@
 import { fetchAllProducts } from "@/Lib/productsApi";
 import ProductsFilter from "@/app/products/ProductsFilter";
+import Navbar from "@/components/Navbar";
 
 const ProductsPage = async () => {
   const products = await fetchAllProducts();
@@ -21,7 +22,12 @@ const ProductsPage = async () => {
   console.log("Unique image hostnames:", hostnames);
   console.log(products);
 
-  return <ProductsFilter products={products} />;
+  return (
+    <div>
+      <Navbar />
+      <ProductsFilter products={products} />
+    </div>
+  );
 };
 
 export default ProductsPage;

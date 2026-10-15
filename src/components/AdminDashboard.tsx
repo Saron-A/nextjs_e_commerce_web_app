@@ -1,7 +1,8 @@
 import AdminSidebar from "./admin/AdminSidebar";
+import AdminNavbar from "./admin/AdminNavbar";
 
 const AdminDashboard = () => {
-  return <AdminSidebar />;
+  return <div></div>;
 };
 
 export default AdminDashboard;

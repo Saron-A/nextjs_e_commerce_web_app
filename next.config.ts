@@ -108,6 +108,10 @@ const nextConfig: NextConfig = {
         protocol: "http",
         hostname: "www.smith.info",
       },
+      {
+        protocol: "https",
+        hostname: "cdn.prod.website-files.com",
+      },
     ],
   },
 };

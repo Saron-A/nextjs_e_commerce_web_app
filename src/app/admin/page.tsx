@@ -1,5 +1,12 @@
-const page = () => {
-  return <div>page</div>;
+import AdminDashboard from "@/components/AdminDashboard";
+import ProtectedRoute from "@/components/ProtectedRoute";
+
+const AdminDashboardPage = () => {
+  return (
+    <ProtectedRoute requiredRole="admin">
+      <AdminDashboard />
+    </ProtectedRoute>
+  );
 };
 
-export default page;
+export default AdminDashboardPage;
