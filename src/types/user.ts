@@ -5,3 +5,12 @@ export interface User {
   role?: string;
   avatar?: string;
 }
+
+export interface AdminUser {
+  id: number;
+  email: string;
+  name?: string;
+  role?: string;
+  avatar?: string;
+  creationAt: string;
+}
