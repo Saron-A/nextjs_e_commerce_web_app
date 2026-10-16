@@ -41,14 +41,15 @@ const UsersPage = async () => {
             <tr key={user.id}>
               <td>
                 <div>
-                  {/* {user.avatar && (
-                    <Image
+                  {user.avatar && (
+                    <img
                       src={user.avatar}
                       alt="user avatar"
                       width="21"
                       height="7"
+                      className="object-contain"
                     />
-                  )} */}
+                  )}
 
                   <span>{user.name}</span>
                 </div>

@@ -9,7 +9,7 @@ interface CategoryProps {
 const CategoryCard = ({ category }: CategoryProps) => {
   return (
     <article>
-      <Image
+      <img
         src={category.image}
         alt={category.name}
         width="60"

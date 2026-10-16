@@ -37,12 +37,13 @@ const CategoriesPage = async () => {
             <tr key={category.id}>
               <td>
                 <div>
-                  {/* <Image
+                  <img
                     src={category.image}
                     alt={category.name}
                     width="21"
                     height="7"
-                  /> */}
+                    className="object-contain"
+                  />
                   <span>{category.name}</span>
                 </div>
               </td>
