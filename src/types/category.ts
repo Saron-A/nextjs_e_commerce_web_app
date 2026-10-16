@@ -3,5 +3,6 @@ export interface Category {
   image: string;
   name: string;
   slug: string;
+  creationAt: string;
   updatedAt: string;
 }
