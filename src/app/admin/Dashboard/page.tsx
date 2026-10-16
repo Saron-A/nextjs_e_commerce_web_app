@@ -12,6 +12,8 @@ import {
 } from "lucide-react";
 import { Product } from "@/types/product";
 import { User } from "@/types/user";
+import AddProductDialog from "@/components/admin/AddProducts";
+import type { ComponentType } from "react";
 
 const DashboardPage = async () => {
   let allProducts: Product[] = [];
@@ -29,6 +31,8 @@ const DashboardPage = async () => {
   const categories = uniqueCategoryIds.map(
     (id) => allProducts.find((product) => product.category.id === id)?.category,
   );
+  const AddProductDialogWithCategories = AddProductDialog as unknown as
+    ComponentType<{ categories: Product["category"][] }>;
 
   const recentProducts = allProducts
     .sort((a, b) => Date.parse(b.creationAt) - Date.parse(a.creationAt))
@@ -110,10 +114,12 @@ const DashboardPage = async () => {
           <section>
             <h3>Quick Action</h3>
             <div>
-              <article>
-                <Plus />
-                <p>Add Product</p>
-              </article>
+              <AddProductDialogWithCategories
+                categories={categories.filter(
+                  (category): category is Product["category"] =>
+                    category !== undefined,
+                )}
+              />
               <Link href="/admin/categories">
                 <Tag />
                 <p>Manage Categories</p>

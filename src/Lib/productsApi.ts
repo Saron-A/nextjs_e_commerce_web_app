@@ -1,12 +1,11 @@
-import { Product } from "@/types/product";
+import { Product, NewProduct } from "@/types/product";
 import { Category } from "@/types/category";
+import { AuthUser } from "@/types/authUser";
 
-// interface ProductsResponse {
-//     products: Product[];
-//     limit: number;
-//     offset: number;
-//     total: number;
-// }
+interface ProductProps {
+  product: NewProduct;
+  user: AuthUser;
+}
 
 async function fetchAllProducts(): Promise<Product[]> {
   const response = await fetch("https://api.escuelajs.co/api/v1/products");
@@ -42,4 +41,33 @@ async function fetchProductsByCategoryId(id: string) {
   return productsByCategory;
 }
 
-export { fetchAllProducts, fetchProductsById, fetchProductsByCategoryId };
+async function createProduct({ product, user }: ProductProps) {
+  console.log("Product payload:", JSON.stringify(product, null, 2));
+  console.log("Images:", product.images[0]);
+  console.log("Is images an array:", Array.isArray(product.images));
+
+  const response = await fetch("https://api.escuelajs.co/api/v1/products", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${user.accessToken}`,
+    },
+    body: JSON.stringify(product),
+  });
+
+  if (!response.ok) {
+    const errorData = await response.json();
+    console.error("Backend Error", errorData);
+    throw new Error(`Failed to create product`);
+  }
+
+  const data = response.json();
+  return data;
+}
+
+export {
+  fetchAllProducts,
+  fetchProductsById,
+  fetchProductsByCategoryId,
+  createProduct,
+};

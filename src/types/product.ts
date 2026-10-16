@@ -16,3 +16,12 @@ export interface Product {
   creationAt: string;
   updatedAt: string;
 }
+
+export interface NewProduct {
+  title: string;
+  price: number;
+  description: string;
+  categoryId: number;
+  images: string[];
+  creationAt: string;
+}
