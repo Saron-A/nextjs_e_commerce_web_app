@@ -31,8 +31,10 @@ const DashboardPage = async () => {
   const categories = uniqueCategoryIds.map(
     (id) => allProducts.find((product) => product.category.id === id)?.category,
   );
-  const AddProductDialogWithCategories = AddProductDialog as unknown as
-    ComponentType<{ categories: Product["category"][] }>;
+  const AddProductDialogWithCategories =
+    AddProductDialog as unknown as ComponentType<{
+      categories: Product["category"][];
+    }>;
 
   const recentProducts = allProducts
     .sort((a, b) => Date.parse(b.creationAt) - Date.parse(a.creationAt))
@@ -114,7 +116,7 @@ const DashboardPage = async () => {
           <section>
             <h3>Quick Action</h3>
             <div>
-              <AddProductDialogWithCategories
+              <AddProductDialog
                 categories={categories.filter(
                   (category): category is Product["category"] =>
                     category !== undefined,
