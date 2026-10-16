@@ -24,29 +24,29 @@ const AdminSidebar = () => {
         </div>
         <nav className="flex flex-col justify-center gap-3 ">
           <Link
-            href="/admin/"
-            className={`flex gap-2 items-center  hover:bg-slate-500 ${pathname === "/admin/products" && `bg-blue-600 p-1`}  `}
+            href="/admin/dashboard"
+            className={`flex gap-2 items-center py-2 px-4 rounded-2xl border-0   ${pathname === "/admin/dashboard" && `bg-blue-600 p-1`}  `}
           >
             <LayoutDashboard className="w-4 h-4" />
             <span className=""> Dashboard</span>
           </Link>
           <Link
             href="/admin/products"
-            className={`flex gap-2 items-center p-1 hover:bg-slate-500 ${pathname === "/admin/products" && `bg-blue-600`}  `}
+            className={`flex gap-2 items-center py-2 px-4  rounded-2xl border-0 ${pathname === "/admin/products" && `bg-blue-600`}  `}
           >
             <PackageSearch className="w-4 h-4" />
             <span>Products</span>
           </Link>
           <Link
             href="/admin/categories"
-            className="flex gap-2 items-center  p-1 hover:bg-slate-500"
+            className={`flex gap-2 items-center py-2 px-4  rounded-2xl border-0 ${pathname === "/admin/categories" && `bg-blue-600 `}  `}
           >
             <Tag className="w-4 h-4" />
             <span>Categories</span>
           </Link>
           <Link
             href="/admin/users"
-            className="flex gap-2 items-center  px-1 py-2 hover:bg-slate-500"
+            className={`flex gap-2 items-center py-2 px-4  rounded-2xl border-0 ${pathname === "/admin/users" && `bg-blue-600 `}  `}
           >
             <Users className="w-4 h-4" />
             <span>Users</span>

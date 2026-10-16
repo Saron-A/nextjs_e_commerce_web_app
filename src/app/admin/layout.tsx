@@ -1,12 +1,15 @@
+import { type ReactNode } from "react";
 import AdminNavigation from "@/components/AdminNavigation";
-import AdminDashboard from "@/components/AdminDashboard";
 import ProtectedRoute from "@/components/ProtectedRoute";
 
-const AdminDashboardPage = () => {
+interface ChildrenState {
+  children: ReactNode;
+}
+
+const AdminDashboardPage = ({ children }: ChildrenState) => {
   return (
     <ProtectedRoute requiredRole="admin">
-      <AdminNavigation />
-      <AdminDashboard />
+      <AdminNavigation>{children}</AdminNavigation>
     </ProtectedRoute>
   );
 };
