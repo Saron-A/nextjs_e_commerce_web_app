@@ -2,8 +2,13 @@ import { Product, NewProduct } from "@/types/product";
 import { Category } from "@/types/category";
 import { AuthUser } from "@/types/authUser";
 
-interface ProductProps {
+interface NewProductProps {
   product: NewProduct;
+  user: AuthUser;
+}
+
+interface ProductProps {
+  product: Product;
   user: AuthUser;
 }
 
@@ -41,7 +46,7 @@ async function fetchProductsByCategoryId(id: string) {
   return productsByCategory;
 }
 
-async function createProduct({ product, user }: ProductProps) {
+async function createProduct({ product, user }: NewProductProps) {
   console.log("Product payload:", JSON.stringify(product, null, 2));
   console.log("Images:", product.images[0]);
   console.log("Is images an array:", Array.isArray(product.images));
@@ -65,9 +70,29 @@ async function createProduct({ product, user }: ProductProps) {
   return data;
 }
 
+async function deleteProductById({ product, user }: ProductProps) {
+  const response = await fetch(
+    `https://api.escuelajs.co/api/v1/products/${product.id}`,
+    {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${user.accessToken}`,
+      },
+    },
+  );
+  if (!response.ok) {
+    console.error("Failed to delete this product", response.status);
+    return;
+  }
+  const data = response.json();
+  console.log("deletion status", data);
+  return data;
+}
+
 export {
   fetchAllProducts,
   fetchProductsById,
   fetchProductsByCategoryId,
   createProduct,
+  deleteProductById,
 };

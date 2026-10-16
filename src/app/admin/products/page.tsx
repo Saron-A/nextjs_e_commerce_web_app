@@ -4,6 +4,7 @@ import { fetchAllProducts } from "@/Lib/productsApi";
 import { Product } from "@/types/product";
 import { Category } from "@/types/category";
 import AddProductDialog from "@/components/admin/AddProducts";
+import DeleteProductDialog from "@/components/admin/DeleteProducts";
 import { Pencil, Trash, ExternalLink, Package, Tag } from "lucide-react";
 
 const ProductsPage = async () => {
@@ -165,14 +166,7 @@ const ProductsPage = async () => {
                           <Pencil size={15} />
                         </button>
 
-                        <button
-                          type="button"
-                          aria-label={`Delete ${product.title}`}
-                          title="Delete product"
-                          className="rounded-md p-1.5 text-slate-500 transition hover:bg-red-50 hover:text-red-600 sm:p-2"
-                        >
-                          <Trash size={15} />
-                        </button>
+                        <DeleteProductDialog product={product} />
                       </div>
                     </td>
                   </tr>
