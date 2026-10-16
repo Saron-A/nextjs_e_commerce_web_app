@@ -1,4 +1,4 @@
-import { Product, NewProduct } from "@/types/product";
+import { Product, NewProduct, EditedProduct } from "@/types/product";
 import { Category } from "@/types/category";
 import { AuthUser } from "@/types/authUser";
 
@@ -9,6 +9,11 @@ interface NewProductProps {
 
 interface ProductProps {
   product: Product;
+  user: AuthUser;
+}
+
+interface EditedProductProps {
+  product: EditedProduct;
   user: AuthUser;
 }
 
@@ -70,6 +75,27 @@ async function createProduct({ product, user }: NewProductProps) {
   return data;
 }
 
+async function editProductById({ product, user }: EditedProductProps) {
+  const response = await fetch(
+    `https://api.escuelajs.co/api/v1/products/${product.id}`,
+    {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authentication: `Bearer ${user.accessToken}`,
+      },
+      body: JSON.stringify(product),
+    },
+  );
+
+  if (!response.ok) {
+    throw new Error(`Failed to edit the product : ${response}`);
+  }
+
+  const data = await response.json();
+  return data;
+}
+
 async function deleteProductById({ product, user }: ProductProps) {
   const response = await fetch(
     `https://api.escuelajs.co/api/v1/products/${product.id}`,
@@ -94,5 +120,6 @@ export {
   fetchProductsById,
   fetchProductsByCategoryId,
   createProduct,
+  editProductById,
   deleteProductById,
 };

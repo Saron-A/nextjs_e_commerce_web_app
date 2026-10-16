@@ -25,3 +25,13 @@ export interface NewProduct {
   images: string[];
   creationAt: string;
 }
+
+export interface EditedProduct {
+  id: number;
+  title: string;
+  price: number;
+  description: string;
+  categoryId: number;
+  images: string[];
+  creationAt: string;
+}

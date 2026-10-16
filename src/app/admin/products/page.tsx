@@ -1,10 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { fetchAllProducts } from "@/Lib/productsApi";
-import { Product } from "@/types/product";
+import { Product, EditedProduct } from "@/types/product";
 import { Category } from "@/types/category";
 import AddProductDialog from "@/components/admin/AddProducts";
 import DeleteProductDialog from "@/components/admin/DeleteProducts";
+import EditProductDialog from "@/components/admin/EditProducts";
 import { Pencil, Trash, ExternalLink, Package, Tag } from "lucide-react";
 
 const ProductsPage = async () => {
@@ -157,14 +158,10 @@ const ProductsPage = async () => {
                           <ExternalLink size={15} />
                         </Link>
 
-                        <button
-                          type="button"
-                          aria-label={`Edit ${product.title}`}
-                          title="Edit product"
-                          className="rounded-md p-1.5 text-slate-500 transition hover:bg-amber-50 hover:text-amber-600 sm:p-2"
-                        >
-                          <Pencil size={15} />
-                        </button>
+                        <EditProductDialog
+                          product={{ ...product, categoryId: product.category.id }}
+                          categories={categories}
+                        />
 
                         <DeleteProductDialog product={product} />
                       </div>
