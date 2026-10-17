@@ -8,17 +8,31 @@ interface CategoryProps {
 
 const CategoryCard = ({ category }: CategoryProps) => {
   return (
-    <article>
-      <img
-        src={category.image}
-        alt={category.name}
-        width="60"
-        height="60"
-        className="object-contain"
-      />
-      <div>
-        <h3>{category.name}</h3>
-        <Link href={`/categories/${category.id}`}>browse </Link>
+    <article className="group flex flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-indigo-200 hover:shadow-lg">
+      <div className="flex h-44 items-center justify-center bg-gray-100 p-6 transition-colors duration-300 group-hover:bg-indigo-50 sm:h-48">
+        <img
+          src={category.image}
+          alt={category.name}
+          width="60"
+          height="60"
+          className="h-24 w-24 object-contain transition-transform duration-300 group-hover:scale-110 sm:h-28 sm:w-28"
+        />
+      </div>
+
+      <div className="flex flex-1 flex-col items-start gap-4 p-5 sm:p-6">
+        <h3 className="text-lg font-semibold capitalize text-gray-900 transition-colors duration-300 group-hover:text-indigo-600 sm:text-xl">
+          {category.name}
+        </h3>
+
+        <Link
+          href={`/categories/${category.id}`}
+          className="mt-auto inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-4 py-2.5 text-sm font-medium text-white transition-all duration-300 hover:bg-indigo-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
+        >
+          Browse
+          <span className="transition-transform duration-300 group-hover:translate-x-1">
+            →
+          </span>
+        </Link>
       </div>
     </article>
   );
