@@ -16,7 +16,7 @@ const AdminSidebar = () => {
   const pathname = usePathname();
 
   return (
-    <aside className="min-h-screen flex flex-0.7 flex-col justify-between py-4 px-6 m-0 bg-slate-800 text-gray-200">
+    <aside className="sticky top-0 h-screen  flex flex-0.7 flex-col justify-between py-4 px-6 m-0 bg-slate-800 text-gray-200 ">
       <div className="flex flex-col justify-center gap-5 mt-5">
         <div className="flex gap-1 p-2 mb-4">
           <ShoppingBag className="p-1 bg-blue-600 text-white border-0 rounded self-center w-8 h-8" />

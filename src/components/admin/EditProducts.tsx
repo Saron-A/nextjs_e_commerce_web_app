@@ -115,15 +115,6 @@ const EditProductDialog = ({ product, categories }: DialogProp) => {
               Update the details of your product below.
             </p>
           </div>
-
-          {/* <button
-            type="button"
-            onClick={closeDialog}
-            aria-label="Close dialog"
-            className="rounded-lg p-2 text-slate-400 transition-colors hover:bg-slate-100 hover:text-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-300"
-          >
-            <X size={18} />
-          </button> */}
         </div>
 
         <form onSubmit={handleSubmit}>

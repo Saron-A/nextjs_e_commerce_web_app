@@ -45,7 +45,7 @@ const ProductsFilter = ({ products }: ProductsFilterProps) => {
     <main className="min-h-screen py-6 sm:py-8 lg:py-10">
       {/* Page Header */}
       <header className="mb-8 border-b border-gray-200 pb-6 sm:mb-10 sm:pb-8">
-        <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-indigo-600">
+        <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-blue-600">
           Explore our collection
         </p>
 
@@ -65,7 +65,7 @@ const ProductsFilter = ({ products }: ProductsFilterProps) => {
           <div className="mb-5 flex items-center justify-between border-b border-gray-200 pb-4">
             <h2 className="text-lg font-bold text-gray-900">Filters</h2>
 
-            <span className="rounded-full bg-indigo-50 px-2.5 py-1 text-xs font-semibold text-indigo-600">
+            <span className="rounded-full bg-blue-50 px-2.5 py-1 text-xs font-semibold text-blue-600">
               Refine
             </span>
           </div>
@@ -86,13 +86,13 @@ const ProductsFilter = ({ products }: ProductsFilterProps) => {
                   onChange={(event) =>
                     setSelectedCategoryId(event.target.value)
                   }
-                  className="h-4 w-4 accent-indigo-600 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                  className="h-4 w-4 accent-blue-600 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
                 />
 
                 <span
                   className={`text-sm transition-colors ${
                     selectedCategoryId === "all"
-                      ? "font-semibold text-indigo-600"
+                      ? "font-semibold text-blue-600"
                       : "text-gray-600 group-hover:text-gray-900"
                   }`}
                 >
@@ -113,13 +113,13 @@ const ProductsFilter = ({ products }: ProductsFilterProps) => {
                     onChange={(event) =>
                       setSelectedCategoryId(event.target.value)
                     }
-                    className="h-4 w-4 accent-indigo-600 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                    className="h-4 w-4 accent-blue-600 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
                   />
 
                   <span
                     className={`text-sm transition-colors ${
                       selectedCategoryId === String(category.id)
-                        ? "font-semibold text-indigo-600"
+                        ? "font-semibold text-blue-600"
                         : "text-gray-600 group-hover:text-gray-900"
                     }`}
                   >
@@ -152,7 +152,7 @@ const ProductsFilter = ({ products }: ProductsFilterProps) => {
                 placeholder="0"
                 value={minPrice}
                 onChange={(event) => setMinPrice(event.target.value)}
-                className="w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2.5 text-sm text-gray-900 outline-none transition placeholder:text-gray-400 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-100"
+                className="w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2.5 text-sm text-gray-900 outline-none transition placeholder:text-gray-400 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-100"
               />
             </div>
 
@@ -172,7 +172,7 @@ const ProductsFilter = ({ products }: ProductsFilterProps) => {
                 placeholder="Any"
                 value={maxPrice}
                 onChange={(event) => setMaxPrice(event.target.value)}
-                className="w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2.5 text-sm text-gray-900 outline-none transition placeholder:text-gray-400 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-100"
+                className="w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2.5 text-sm text-gray-900 outline-none transition placeholder:text-gray-400 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-100"
               />
             </div>
           </section>

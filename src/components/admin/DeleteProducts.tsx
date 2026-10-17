@@ -43,7 +43,7 @@ const DeleteProductDialog = ({ product }: DialogProp) => {
     <>
       <button
         type="button"
-        className="inline-flex items-center justify-center rounded-lg p-2 text-slate-500 transition-colors duration-200 hover hover focus focus focus focus"
+        className="inline-flex items-center justify-center rounded-lg p-2 text-slate-500 transition-colors duration-200 hover hover focus focus focus focus hover:bg-red-100 hover:text-red-500"
         onClick={openDialog}
       >
         <Trash size={16} />

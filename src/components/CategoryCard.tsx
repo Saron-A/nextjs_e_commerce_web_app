@@ -8,8 +8,8 @@ interface CategoryProps {
 
 const CategoryCard = ({ category }: CategoryProps) => {
   return (
-    <article className="group flex flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-indigo-200 hover:shadow-lg">
-      <div className="flex h-44 items-center justify-center bg-gray-100 p-6 transition-colors duration-300 group-hover:bg-indigo-50 sm:h-48">
+    <article className="group flex flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-lg">
+      <div className="flex h-44 items-center justify-center bg-gray-100 p-6 transition-colors duration-300 group-hover:bg-blue-50 sm:h-48">
         <img
           src={category.image}
           alt={category.name}
@@ -20,13 +20,13 @@ const CategoryCard = ({ category }: CategoryProps) => {
       </div>
 
       <div className="flex flex-1 flex-col items-start gap-4 p-5 sm:p-6">
-        <h3 className="text-lg font-semibold capitalize text-gray-900 transition-colors duration-300 group-hover:text-indigo-600 sm:text-xl">
+        <h3 className="text-lg font-semibold capitalize text-gray-900 transition-colors duration-300 group-hover:text-blue-500 sm:text-xl">
           {category.name}
         </h3>
 
         <Link
           href={`/categories/${category.id}`}
-          className="mt-auto inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-4 py-2.5 text-sm font-medium text-white transition-all duration-300 hover:bg-indigo-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
+          className="mt-auto inline-flex items-center gap-2 rounded-lg bg-blue-500 px-4 py-2.5 text-sm font-medium text-white transition-all duration-300 hover:bg-blue-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
         >
           Browse
           <span className="transition-transform duration-300 group-hover:translate-x-1">

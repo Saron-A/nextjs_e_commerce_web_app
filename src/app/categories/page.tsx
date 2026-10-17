@@ -19,7 +19,7 @@ const CategoriesList = async () => {
 
       <main className="mx-auto w-full max-w-7xl px-4 py-8 sm:px-6 sm:py-10 lg:px-8 lg:py-12">
         <header className="mb-8 border-b border-gray-200 pb-6 sm:mb-10 sm:pb-8">
-          <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-indigo-600">
+          <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-blue-600">
             Browse by department
           </p>
 

@@ -34,7 +34,7 @@ const ProductDetails = async ({ params }: ProductDetailsProp) => {
 
           {/* Product Information */}
           <div className="flex flex-col justify-center py-2 sm:py-4">
-            <p className="w-fit rounded-full bg-indigo-50 px-3 py-1.5 text-xs font-semibold uppercase tracking-widest text-indigo-600 sm:text-sm">
+            <p className="w-fit rounded-full bg-blue-50 px-3 py-1.5 text-xs font-semibold uppercase tracking-widest text-blue-600 sm:text-sm">
               {product.category.name}
             </p>
 
@@ -42,7 +42,7 @@ const ProductDetails = async ({ params }: ProductDetailsProp) => {
               {product.title}
             </h1>
 
-            <p className="mt-5 text-2xl font-bold text-indigo-600 sm:mt-6 sm:text-3xl">
+            <p className="mt-5 text-2xl font-bold text-blue-600 sm:mt-6 sm:text-3xl">
               ${product.price.toFixed(2)}
             </p>
 
