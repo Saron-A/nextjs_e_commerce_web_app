@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Product } from "@/types/product";
+import { ArrowRight } from "lucide-react";
 
 interface ProductProps {
   product: Product;
@@ -10,32 +11,50 @@ interface ProductProps {
 
 const ProductCard = ({ product }: ProductProps) => {
   return (
-    <div className="flex gap-5 border-1 rounded justify-between px-6 py-8">
-      <div>
+    <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-indigo-200 hover:shadow-lg">
+      {/* Product Image */}
+      <Link
+        href={`/products/${product.id}`}
+        className="flex h-52 items-center justify-center overflow-hidden bg-gray-50 p-5 sm:h-56"
+      >
         <Image
           src={product.images[0]}
           alt={product.slug}
-          width={150}
-          height={150}
-          className="object-contain"
+          width={250}
+          height={250}
+          className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-105"
         />
-      </div>
-      <div>
-        <div className="">
-          <p className="text-xs font-semibold text-gray-500 mb-1">
-            {product.category.name}
-          </p>
-          <h3 className="font-extrabold">{product.title}</h3>
+      </Link>
 
-          <h3 className="text-blue-500 font-bold">${product.price}</h3>
-        </div>
-        <Link href={`/products/${product.id}`}>
-          <button className="px-4 py-2 border-0 rounded bg-blue-500 text-white font-bold hover:bg-blue-700">
-            View Product
-          </button>
+      {/* Product Information */}
+      <div className="flex flex-1 flex-col p-4 sm:p-5">
+        <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-indigo-600">
+          {product.category.name}
+        </p>
+
+        <h3 className="line-clamp-2 min-h-12 text-base font-semibold leading-6 text-gray-900 transition-colors group-hover:text-indigo-600 sm:text-lg">
+          {product.title}
+        </h3>
+
+        <p className="mt-3 text-xl font-bold text-gray-900">
+          ${product.price.toFixed(2)}
+        </p>
+
+        {/* View Product Button */}
+        <Link
+          href={`/products/${product.id}`}
+          className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-indigo-600 px-4 py-3 text-sm font-semibold text-white transition-all duration-200 hover:bg-indigo-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
+        >
+          View Product
+          <ArrowRight
+            size={16}
+            strokeWidth={2}
+            className="transition-transform duration-200 group-hover:translate-x-1"
+            aria-hidden="true"
+          />
         </Link>
       </div>
-    </div>
+    </article>
   );
 };
 
