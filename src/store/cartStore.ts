@@ -5,11 +5,16 @@ import { Product } from "@/types/product";
 interface CartItem {
   product: Product;
   quantity: number;
+  id: number;
 }
 
 interface CartState {
   cartItems: CartItem[];
   addToCart: (product: Product) => void;
+  increaseQuantity: (id: number) => void;
+  decreaseQuantity: (id: number) => void;
+  removeItem: (id: number) => void;
+  clearCart: () => void;
 }
 
 const useCartStore = create<CartState>()((set) => ({
@@ -33,12 +38,34 @@ const useCartStore = create<CartState>()((set) => ({
       const newItem = {
         product,
         quantity: 1,
+        id: product.id,
       };
 
       return {
         cartItems: [...state.cartItems, newItem],
       };
     }),
+  increaseQuantity: (id: number) =>
+    set((state) => ({
+      cartItems: state.cartItems.map((item) =>
+        item.id === id ? { ...item, quantity: item.quantity + 1 } : item,
+      ),
+    })),
+
+  decreaseQuantity: (id: number) =>
+    set((state) => ({
+      cartItems: state.cartItems
+        .map((item) =>
+          item.id === id ? { ...item, quantity: item.quantity - 1 } : item,
+        )
+        .filter((item) => item.quantity > 0),
+    })),
+  removeItem: (id: number) =>
+    set((state) => ({
+      cartItems: state.cartItems.filter((item) => item.id !== id),
+    })),
+
+  clearCart: () => set({ cartItems: [] }),
 }));
 
 export { useCartStore };

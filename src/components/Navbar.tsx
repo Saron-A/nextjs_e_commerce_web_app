@@ -40,7 +40,7 @@ const Navbar = () => {
         {user && user.role === "admin" && (
           <Link
             href="/admin/dashboard"
-            className={`hover:text-black hover:font-semibold ${pathname === "/categories" ? "text-blue-600 border-b-2 border-blue-500 hover:border-b-2 border-black" : "text-gray-600 text-sm"}`}
+            className={`hover:text-black hover:font-semibold ${pathname === "/admin/dashboard" ? "text-blue-600 border-b-2 border-blue-500 hover:border-b-2 border-black" : "text-gray-600 text-sm"}`}
           >
             Admin Panel
           </Link>

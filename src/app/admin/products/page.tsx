@@ -151,15 +151,16 @@ const ProductsPage = async () => {
                       <div className="flex items-center justify-center gap-0.5 sm:gap-1">
                         <Link
                           href={`/products/${product.id}`}
-                          aria-label={`View ${product.title}`}
-                          title="View product"
                           className="rounded-md p-1.5 text-slate-500 transition hover:bg-blue-50 hover:text-blue-600 sm:p-2"
                         >
                           <ExternalLink size={15} />
                         </Link>
 
                         <EditProductDialog
-                          product={{ ...product, categoryId: product.category.id }}
+                          product={{
+                            ...product,
+                            categoryId: product.category.id,
+                          }}
                           categories={categories}
                         />
 

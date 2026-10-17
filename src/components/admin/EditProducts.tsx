@@ -97,14 +97,11 @@ const EditProductDialog = ({ product, categories }: DialogProp) => {
       <button
         type="button"
         onClick={openDialog}
-        aria-label={`Edit ${product.title}`}
-        title="Edit product"
         className="inline-flex items-center justify-center rounded-lg p-2 text-slate-500 transition-colors hover:bg-amber-50 hover:text-amber-600 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-offset-2"
       >
-        {" "}
-        <Pencil size={16} />{" "}
+        <Pencil size={16} />
       </button>
-      ```
+
       <dialog
         ref={dialogRef}
         className="m-auto w-[calc(100%-2rem)] max-w-2xl overflow-hidden rounded-2xl border border-slate-200 bg-white p-0 text-slate-900 shadow-2xl backdrop:bg-slate-950/50 backdrop:backdrop-blur-sm"
@@ -119,14 +116,14 @@ const EditProductDialog = ({ product, categories }: DialogProp) => {
             </p>
           </div>
 
-          <button
+          {/* <button
             type="button"
             onClick={closeDialog}
             aria-label="Close dialog"
             className="rounded-lg p-2 text-slate-400 transition-colors hover:bg-slate-100 hover:text-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-300"
           >
             <X size={18} />
-          </button>
+          </button> */}
         </div>
 
         <form onSubmit={handleSubmit}>
@@ -238,6 +235,23 @@ const EditProductDialog = ({ product, categories }: DialogProp) => {
               </p>
             </div>
 
+            <div className="flex flex-col-reverse gap-3 border-t border-slate-100 bg-slate-50/70 px-6 py-4 sm:flex-row sm:items-center sm:justify-end sm:px-8">
+              <button
+                type="button"
+                onClick={closeDialog}
+                className="rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 shadow-sm transition-colors hover:bg-slate-100"
+              >
+                Cancel
+              </button>
+
+              <button
+                type="submit"
+                className="inline-flex items-center justify-center gap-2 rounded-lg bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-blue-700"
+              >
+                Submit Changes
+              </button>
+            </div>
+
             {success && (
               <div
                 role="status"
@@ -269,18 +283,16 @@ const EditProductDialog = ({ product, categories }: DialogProp) => {
             <button
               type="button"
               onClick={closeDialog}
-              disabled={isSubmitting}
-              className="rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 shadow-sm transition-colors hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+              className="rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 shadow-sm transition-colors hover:bg-slate-100"
             >
               Cancel
             </button>
 
             <button
               type="submit"
-              disabled={isSubmitting}
-              className="inline-flex items-center justify-center gap-2 rounded-lg bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60"
+              className="inline-flex items-center justify-center gap-2 rounded-lg bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-blue-700"
             >
-              {isSubmitting ? "Saving changes..." : "Save changes"}
+              Submit Changes
             </button>
           </div>
         </form>
